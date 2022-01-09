@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="24dp"
         android:textSize="24dp"
         android:textColor="@color/textPrimary"
         android:text="Choose an algorithm" />
@@ -46,7 +47,7 @@
         android:textSize="24dp"
         android:textColor="@color/textPrimary"
         android:layout_marginTop="24dp"
-        android:text="Choose mode" />
+        android:text="Choose a mode" />
 
     <Button
         android:id="@+id/easyModeButton"
@@ -65,6 +66,7 @@
         android:text="Normal mode" />
 
     <Button
+        android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"

@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.appcompat.app.AlertDialog
+import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
-import com.example.path_finding_app.databinding.ActivityMainBinding
-
-
+import com.example.path_finding_app.fragments.adapters.ViewPagerAdapter
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 class ChooseAlgorithm : Fragment() {
@@ -22,15 +23,13 @@ class ChooseAlgorithm : Fragment() {
     protected lateinit var EasyModeButton: View
     protected lateinit var NormalModeButton: View
 
+    protected lateinit var StartButton: View
+
     var selectedAlgorithm = ""
     var selectedMode = ""
 
-    private lateinit var binding : ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
     }
 
     private fun changeBtnColor (btn: View, pressed: Boolean) {
@@ -74,14 +73,24 @@ class ChooseAlgorithm : Fragment() {
         }
 
         EasyModeButton.setOnClickListener {
-            selectedAlgorithm = "easy-mode"
+            selectedMode = "easy-mode"
             clearRestModes()
             changeBtnColor(EasyModeButton, true)
         }
         NormalModeButton.setOnClickListener {
-            selectedAlgorithm = "normal-mode"
+            selectedMode = "normal-mode"
             clearRestModes()
             changeBtnColor(NormalModeButton, true)
+        }
+
+        StartButton.setOnClickListener {
+            if (selectedAlgorithm == "" ||  selectedMode == "") {
+                (activity as MainActivity).alert("Can't start the game", "Select algorithm and mode to continue")
+            }
+            else {
+                (activity as MainActivity).setChoices(selectedAlgorithm, selectedMode)
+                (activity as MainActivity).changeTab(1)
+            }
         }
     }
 
@@ -95,6 +104,7 @@ class ChooseAlgorithm : Fragment() {
         HierarchicalPathButton = root.findViewById<View>(R.id.hierarchicalPathButton)
         EasyModeButton = root.findViewById<View>(R.id.easyModeButton)
         NormalModeButton = root.findViewById<View>(R.id.normalModeButton)
+        StartButton = root.findViewById<View>(R.id.startButton)
 
         setOnClickListeners(root)
         return root

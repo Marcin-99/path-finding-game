@@ -2,19 +2,38 @@ package com.example.path_finding_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import com.example.path_finding_app.fragments.ChooseAlgorithm
 import com.example.path_finding_app.fragments.Game
 import com.example.path_finding_app.fragments.Summary
 import com.example.path_finding_app.fragments.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_choose_algorithm.*
 
 class MainActivity : AppCompatActivity() {
+    protected lateinit var selectedAlgorithm: String
+    protected lateinit var selectedMode: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setUpTabs()
+    }
+
+    fun alert(title: String, message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .show()
+    }
+
+    fun changeTab(position: Int) {
+        viewPager.currentItem = position
+    }
+
+    fun setChoices(algorithm: String, mode: String) {
+        selectedAlgorithm = algorithm
+        selectedMode = mode
     }
 
     private fun setUpTabs() {
