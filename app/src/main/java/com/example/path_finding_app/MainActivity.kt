@@ -2,6 +2,7 @@ package com.example.path_finding_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.example.path_finding_app.fragments.ChooseAlgorithm
 import com.example.path_finding_app.fragments.Game
@@ -12,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     protected lateinit var selectedAlgorithm: String
     protected lateinit var selectedMode: String
+
+    protected var level = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +28,10 @@ class MainActivity : AppCompatActivity() {
             .setTitle(title)
             .setMessage(message)
             .show()
+    }
+
+    fun setNewLevel(newLevel: Int) {
+        level = newLevel
     }
 
     fun changeTab(position: Int) {

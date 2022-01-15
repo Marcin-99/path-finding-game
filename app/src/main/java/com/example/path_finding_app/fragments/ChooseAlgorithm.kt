@@ -90,6 +90,7 @@ class ChooseAlgorithm : Fragment() {
             else {
                 (activity as MainActivity).setChoices(selectedAlgorithm, selectedMode)
                 (activity as MainActivity).changeTab(1)
+                (activity as MainActivity).setNewLevel(1)
             }
         }
     }
