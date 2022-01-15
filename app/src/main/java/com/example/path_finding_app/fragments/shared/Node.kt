@@ -1,4 +1,4 @@
-package com.example.path_finding_app.fragments.utils
+package com.example.path_finding_app.fragments.shared
 
 class Node(isStart: Boolean, isFinish: Boolean, isWall: Boolean) {
     var isStart = isStart
