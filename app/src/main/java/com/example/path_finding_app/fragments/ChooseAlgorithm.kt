@@ -28,10 +28,6 @@ class ChooseAlgorithm : Fragment() {
     var selectedAlgorithm = ""
     var selectedMode = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     private fun changeBtnColor (btn: View, pressed: Boolean) {
         var color = R.color.buttonNotSubmited
         if (pressed)

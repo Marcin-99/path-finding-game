@@ -18,10 +18,6 @@ class Game : Fragment() {
     protected lateinit var root: View
     protected var levelBoard: HashMap<String, Node> = hashMapOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     private fun setOnClickListeners (root: View) {
         for (y in 0..11) {
             for (x in 0..9) {
@@ -42,8 +38,8 @@ class Game : Fragment() {
 
         buildLevelBoard(levelBoard, levelLayout)
         printLevelBoard(levelBoard, root)
-        setOnClickListeners(root)
 
+        setOnClickListeners(root)
         return root
     }
 }
