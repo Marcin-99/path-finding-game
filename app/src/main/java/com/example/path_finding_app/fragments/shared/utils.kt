@@ -48,8 +48,14 @@ fun printLevelBoard(levelBoard: HashMap<String, Node>, root: View) {
             else if (boardNode?.isFinish === true) {
                 boardButton.setBackgroundColor(Color.parseColor("#ff6666"))
             }
+            else if (boardNode?.isSelected === true) {
+                boardButton.setBackgroundColor(Color.parseColor("#ccebff"))
+            }
             else if (boardNode?.isWall === true) {
                 boardButton.setBackgroundColor(Color.parseColor("#072227"))
+            }
+            else {
+                boardButton.setBackgroundColor(Color.parseColor("#FFFFFF"))
             }
         }
     }

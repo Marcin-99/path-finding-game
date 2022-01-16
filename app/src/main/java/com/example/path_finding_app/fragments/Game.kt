@@ -25,7 +25,12 @@ class Game : Fragment() {
             for (x in 0..9) {
                 val boardButton = findButton(root, x, y)
                 boardButton.setOnClickListener {
-                    (activity as MainActivity).alert("button clicked", "x: ${x} | y: ${y}")
+                    //(activity as MainActivity).alert("button clicked", "x: ${x} | y: ${y}")
+                    val node = levelBoard["x${x}y${y}"]
+                    if (node?.isStart === false && node?.isFinish === false && node?.isWall === false) {
+                        node.isSelected = !node.isSelected
+                        printLevelBoard(levelBoard, root)
+                    }
                 }
             }
         }
@@ -34,9 +39,6 @@ class Game : Fragment() {
     private fun setStaticText(root: View) {
         val algorithmDisplayText: TextView = root.findViewById<View>(R.id.algorithmDisplayText) as TextView
         algorithmDisplayText.text = (activity as MainActivity).selectedAlgorithm
-
-        println("LEVELLLLL")
-        println((activity as MainActivity).level)
 
         val levelDisplayText: TextView = root.findViewById<View>(R.id.levelDisplayText) as TextView
         levelDisplayText.text = (activity as MainActivity).level.toString()

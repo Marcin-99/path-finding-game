@@ -4,4 +4,6 @@ class Node(isStart: Boolean, isFinish: Boolean, isWall: Boolean) {
     var isStart = isStart
     var isFinish = isFinish
     var isWall = isWall
+
+    var isSelected = false
 }
