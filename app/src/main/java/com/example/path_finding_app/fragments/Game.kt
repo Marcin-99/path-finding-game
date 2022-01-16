@@ -75,7 +75,10 @@ class Game : Fragment() {
             Handler().postDelayed({
                 val node = path.shortestPath[i].node
                 val nodeToPrint = findButton(root, node.x, node.y)
-                nodeToPrint.setBackgroundColor(Color.parseColor("#3399ff"))
+                val boardNode = levelBoard["x${node.x}y${node.y}"]
+                if (boardNode?.isStart === false && boardNode?.isFinish === false) {
+                    nodeToPrint.setBackgroundColor(Color.parseColor("#3399ff"))
+                }
             }, timeInterval)
         }
 

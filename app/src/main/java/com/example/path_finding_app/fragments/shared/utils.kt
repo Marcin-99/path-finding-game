@@ -49,7 +49,7 @@ fun printLevelBoard(levelBoard: HashMap<String, Node>, root: View) {
                 boardButton.setBackgroundColor(Color.parseColor("#339933"))
             }
             else if (boardNode?.isFinish === true) {
-                boardButton.setBackgroundColor(Color.parseColor("#ff6666"))
+                boardButton.setBackgroundColor(Color.parseColor("#e60000"))
             }
             else if (boardNode?.isSelected === true) {
                 boardButton.setBackgroundColor(Color.parseColor("#ccebff"))
