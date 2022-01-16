@@ -80,13 +80,13 @@ class ChooseAlgorithm : Fragment() {
         }
 
         StartButton.setOnClickListener {
-            if (selectedAlgorithm == "" ||  selectedMode == "") {
+            if (selectedAlgorithm === "" ||  selectedMode === "") {
                 (activity as MainActivity).alert("Can't start the game", "Select algorithm and mode to continue")
             }
             else {
+                (activity as MainActivity).setNewLevel(1)
                 (activity as MainActivity).setChoices(selectedAlgorithm, selectedMode)
                 (activity as MainActivity).changeTab(1)
-                (activity as MainActivity).setNewLevel(1)
             }
         }
     }

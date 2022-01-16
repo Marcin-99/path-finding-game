@@ -11,10 +11,9 @@ import com.example.path_finding_app.fragments.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    protected lateinit var selectedAlgorithm: String
-    protected lateinit var selectedMode: String
-
-    protected var level = 0
+    var selectedAlgorithm: String = ""
+    var selectedMode: String = ""
+    var level = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

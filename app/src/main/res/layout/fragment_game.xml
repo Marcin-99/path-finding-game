@@ -12,35 +12,108 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="4dp">
 
-        <TextView
-            android:id="@+id/algorithmDisplayText"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dijkstra algorithm"
-            android:textColor="@color/textPrimary"
-            android:textSize="20dp" />
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Algorithm"
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+            <TextView
+                android:id="@+id/algorithmDisplayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+        </LinearLayout>
+        <View
+            style="@style/verticalLine"
+            android:layout_marginLeft="12dp"
+            android:layout_width="1dp"/>
 
-        <TextView
-            android:id="@+id/levelDisplayText"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:text="Level 1"
-            android:textColor="@color/textPrimary"
-            android:textSize="20dp" />
+            android:orientation="vertical"
+            android:layout_marginLeft="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level"
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+            <TextView
+                android:id="@+id/levelDisplayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+        </LinearLayout>
+        <View
+            style="@style/verticalLine"
+            android:layout_marginLeft="12dp"
+            android:layout_width="1dp"/>
 
-        <TextView
-            android:id="@+id/modeDisplayText"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Normal mode"
-            android:textColor="@color/textPrimary"
-            android:layout_marginLeft="24dp"
-            android:textSize="20dp" />
+            android:orientation="vertical"
+            android:layout_marginLeft="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Game mode"
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/modeDisplayText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+        </LinearLayout>
+        <View
+            style="@style/verticalLine"
+            android:layout_marginLeft="12dp"
+            android:layout_width="1dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score"
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/scoreDisplayText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="1234"
+                android:textColor="@color/textPrimary"
+                android:textSize="14dp" />
+        </LinearLayout>
 
     </LinearLayout>
+    <View
+        style="@style/horizontalLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
     <TextView
         android:id="@+id/drawCorrectPathDisplayText"
