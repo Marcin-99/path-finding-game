@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     var selectedAlgorithm: String = ""
     var selectedMode: String = ""
     var level = 0
+    var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,10 @@ class MainActivity : AppCompatActivity() {
     fun setChoices(algorithm: String, mode: String) {
         selectedAlgorithm = algorithm
         selectedMode = mode
+    }
+
+    fun incrementScore(increment: Int) {
+        score += increment
     }
 
     private fun setUpTabs() {

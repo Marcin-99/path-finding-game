@@ -1,6 +1,6 @@
 package com.example.path_finding_app.fragments.levels
 
-class BestFirstSearch(level: Int) {
+class BestFirstSearchLevels(level: Int) {
 
     lateinit var levelLayout: LevelLayout
 
@@ -13,7 +13,7 @@ class BestFirstSearch(level: Int) {
     init {
         when(level) {
             1 -> levelLayout = LevelLayout(
-                intArrayOf(0, 0),
+                intArrayOf(1, 1),
                 intArrayOf(9, 11),
                 arrayOf(
                     intArrayOf(9, 0),

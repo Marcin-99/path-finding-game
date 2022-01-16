@@ -5,22 +5,22 @@ import android.view.View
 import android.widget.TextView
 import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
-import com.example.path_finding_app.fragments.levels.BestFirstSearch
+import com.example.path_finding_app.fragments.levels.BestFirstSearchLevels
 
-fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: BestFirstSearch.LevelLayout) {
+fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: BestFirstSearchLevels.LevelLayout) {
     for (y in 0..11) {
         for (x in 0..9) {
             if (isWall(levelLayout.walls, x, y)) {
-                levelBoard.put("x${x}y${y}", Node(false, false, true))
+                levelBoard.put("x${x}y${y}", Node(x, y, false, false, true))
             }
             else if (levelLayout.startNode[0] === x && levelLayout.startNode[1] === y) {
-                levelBoard.put("x${x}y${y}", Node(true, false, false))
+                levelBoard.put("x${x}y${y}", Node(x, y, true, false, false))
             }
             else if (levelLayout.finishNode[0] === x && levelLayout.finishNode[1] === y) {
-                levelBoard.put("x${x}y${y}", Node(false, true, false))
+                levelBoard.put("x${x}y${y}", Node(x, y, false, true, false))
             }
             else {
-                levelBoard.put("x${x}y${y}", Node(false, false, false))
+                levelBoard.put("x${x}y${y}", Node(x, y, false, false, false))
             }
         }
     }
@@ -64,7 +64,7 @@ fun printLevelBoard(levelBoard: HashMap<String, Node>, root: View) {
     }
 }
 
-fun setOnClickListeners (levelBoard: HashMap<String, Node>, root: View) {
+fun setCommonOnClickListeners (levelBoard: HashMap<String, Node>, root: View) {
     for (y in 0..11) {
         for (x in 0..9) {
             val boardButton = findButton(root, x, y)
@@ -82,14 +82,14 @@ fun setOnClickListeners (levelBoard: HashMap<String, Node>, root: View) {
 
 fun setStaticText(activity: MainActivity, root: View) {
     val algorithmDisplayText: TextView = root.findViewById<View>(R.id.algorithmDisplayText) as TextView
-    algorithmDisplayText.text = (activity as MainActivity).selectedAlgorithm
+    algorithmDisplayText.text = activity.selectedAlgorithm
 
     val levelDisplayText: TextView = root.findViewById<View>(R.id.levelDisplayText) as TextView
-    levelDisplayText.text = (activity as MainActivity).level.toString()
+    levelDisplayText.text = activity.level.toString()
 
     val modeDisplayText: TextView = root.findViewById<View>(R.id.modeDisplayText) as TextView
-    modeDisplayText.text = (activity as MainActivity).selectedMode
+    modeDisplayText.text = activity.selectedMode
 
     val scoreDisplayText: TextView = root.findViewById<View>(R.id.scoreDisplayText) as TextView
-    scoreDisplayText.text = "1234"
+    scoreDisplayText.text = activity.score.toString()
 }
