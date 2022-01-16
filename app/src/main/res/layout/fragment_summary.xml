@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Summary">
+    android:orientation="vertical"
+    tools:context=".fragments.Game">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/congratulationsText"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/textPrimary"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:textSize="32dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Summary"
-            android:textColor="@android:color/black"
-            android:textSize="24sp" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/algorithmCongratulationsText"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/textPrimary"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:textSize="32dp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/yourScoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/textPrimary"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/summaryScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/textPrimary"
+        android:layout_gravity="center"
+        android:textSize="32dp" />
+
+</LinearLayout>

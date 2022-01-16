@@ -52,6 +52,10 @@ class MainActivity : AppCompatActivity() {
         score += increment
     }
 
+    fun setIsGameFinished() {
+        isGameFinished = !isGameFinished
+    }
+
     private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(ChooseAlgorithm(), "Algorithm")

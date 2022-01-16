@@ -128,6 +128,9 @@ class Game : Fragment() {
         }
 
         val nextLevelButton = root.findViewById<View>(R.id.nextLevelButton)
+        if ((activity as MainActivity).level === 5) {
+            (nextLevelButton as TextView).text = "Summary"
+        }
         nextLevelButton.visibility = View.VISIBLE
     }
 
@@ -140,8 +143,14 @@ class Game : Fragment() {
     fun setSpecificOnClickListeners(selectedAlgorithm: String) {
         val nextLevelButton = root.findViewById<View>(R.id.nextLevelButton)
         nextLevelButton.setOnClickListener {
-            (activity as MainActivity).incrementLevel()
-            setupLevel()
+            if ((activity as MainActivity).level === 5) {
+                (activity as MainActivity).setIsGameFinished()
+                (activity as MainActivity).changeTab(2)
+            }
+            else {
+                (activity as MainActivity).incrementLevel()
+                setupLevel()
+            }
         }
 
         val checkResultButton = root.findViewById<View>(R.id.checkResultButton)
@@ -150,7 +159,7 @@ class Game : Fragment() {
                 val algorithm = Dijkstra(levelBoard, levelLayout)
                 val path = algorithm.runAlgorithm()
                 animatePath(path)
-                incrementScore(1500)
+                incrementScore(2000)
             }
 
             //
