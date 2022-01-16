@@ -1,10 +1,9 @@
 package com.example.path_finding_app.fragments.algorithms
 
-import com.example.path_finding_app.fragments.levels.BestFirstSearchLevels
+import com.example.path_finding_app.fragments.levels.DijkstraLevels
 import com.example.path_finding_app.fragments.shared.Node
-import kotlin.math.abs
 
-class BestFirstSearch(levelBoard: HashMap<String, Node>, levelLayout: BestFirstSearchLevels.LevelLayout) {
+class Dijkstra(levelBoard: HashMap<String, Node>, levelLayout: DijkstraLevels.LevelLayout) {
 
     var levelBoard = levelBoard
     var levelLayout = levelLayout
@@ -31,8 +30,6 @@ class BestFirstSearch(levelBoard: HashMap<String, Node>, levelLayout: BestFirstS
     }
 
     fun runAlgorithm(): Path {
-        println("RUN ALGORITHM")
-
         var pathFound = false
 
         var currentNode = Neighbor(
@@ -49,10 +46,6 @@ class BestFirstSearch(levelBoard: HashMap<String, Node>, levelLayout: BestFirstS
         }
 
         while (pathFound === false) {
-            //if (openPath.size === 0) {
-                //return null
-            //}
-
             currentNode = openPath[0]
             if (currentNode.heuristic === 0) {
                 pathFound = true
@@ -118,7 +111,7 @@ class BestFirstSearch(levelBoard: HashMap<String, Node>, levelLayout: BestFirstS
         val finish = levelLayout.finishNode
         val xDif = finish[0] - node.x
         val yDif = finish[1] - node.y
-        return Math.abs(xDif + yDif)
+        return Math.abs(xDif) + Math.abs(yDif)
     }
 }
 

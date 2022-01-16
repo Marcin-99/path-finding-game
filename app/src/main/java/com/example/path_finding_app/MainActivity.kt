@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     var selectedMode: String = ""
     var level = 0
     var score = 0
+    var isGameFinished = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity() {
 
     fun setNewLevel(newLevel: Int) {
         level = newLevel
+    }
+
+    fun incrementLevel() {
+        level += 1
     }
 
     fun changeTab(position: Int) {

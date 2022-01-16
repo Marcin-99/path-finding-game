@@ -5,9 +5,9 @@ import android.view.View
 import android.widget.TextView
 import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
-import com.example.path_finding_app.fragments.levels.BestFirstSearchLevels
+import com.example.path_finding_app.fragments.levels.DijkstraLevels
 
-fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: BestFirstSearchLevels.LevelLayout) {
+fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: DijkstraLevels.LevelLayout) {
     for (y in 0..11) {
         for (x in 0..9) {
             if (isWall(levelLayout.walls, x, y)) {
@@ -69,7 +69,6 @@ fun setCommonOnClickListeners (levelBoard: HashMap<String, Node>, root: View) {
         for (x in 0..9) {
             val boardButton = findButton(root, x, y)
             boardButton.setOnClickListener {
-                //(activity as MainActivity).alert("button clicked", "x: ${x} | y: ${y}")
                 val node = levelBoard["x${x}y${y}"]
                 if (node?.isStart === false && node?.isFinish === false && node?.isWall === false) {
                     node.isSelected = !node.isSelected

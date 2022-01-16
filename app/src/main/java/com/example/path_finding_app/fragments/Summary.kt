@@ -5,15 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
 
 class Summary : Fragment() {
+
+    override fun onResume() {
+        (activity as MainActivity).changeTab(1)
+        super.onResume()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_summary, container, false)
+        var root = inflater.inflate(R.layout.fragment_summary, container, false)
+        return root
     }
 }

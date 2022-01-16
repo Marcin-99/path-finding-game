@@ -680,5 +680,12 @@
             android:layout_height="wrap_content"
             android:text="Check result"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nextLevelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next level"
+            android:visibility="gone"/>
+
     </LinearLayout>
 </LinearLayout>

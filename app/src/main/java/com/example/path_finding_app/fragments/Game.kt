@@ -10,19 +10,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
-import com.example.path_finding_app.fragments.algorithms.BestFirstSearch
-import com.example.path_finding_app.fragments.levels.BestFirstSearchLevels
+import com.example.path_finding_app.fragments.algorithms.Dijkstra
+import com.example.path_finding_app.fragments.levels.DijkstraLevels
 import com.example.path_finding_app.fragments.shared.*
-import java.util.*
 import kotlin.collections.HashMap
 
 class Game : Fragment() {
 
     protected lateinit var root: View
     protected var levelBoard: HashMap<String, Node> = hashMapOf()
-    protected lateinit var levelLayout: BestFirstSearchLevels.LevelLayout
+    protected lateinit var levelLayout: DijkstraLevels.LevelLayout
 
-    fun animatePath(path: BestFirstSearch.Path) {
+    fun animatePath(path: Dijkstra.Path) {
         for (i in 0..path.closedPath.size - 1) {
             if (i === 0 || i === path.closedPath.size - 1) {
                 continue
@@ -42,7 +41,7 @@ class Game : Fragment() {
         }
     }
 
-    fun isInShortestPath(node: Node, path: BestFirstSearch.Path): Boolean {
+    fun isInShortestPath(node: Node, path: Dijkstra.Path): Boolean {
         for (shortPathNode in path.shortestPath) {
             if (shortPathNode.node.x === node.x && shortPathNode.node.y === node.y) {
                 return true
@@ -51,7 +50,7 @@ class Game : Fragment() {
         return false
     }
 
-    fun revertClosedPathColor(path: BestFirstSearch.Path) {
+    fun revertClosedPathColor(path: Dijkstra.Path) {
         for (i in path.closedPath.size - 1 downTo 0) {
             val timeInterval = ((path.closedPath.size - i)*25).toLong()
             Handler().postDelayed({
@@ -69,7 +68,7 @@ class Game : Fragment() {
         }, delay)
     }
 
-    fun changeColorsOfNodesWithShortestPath(path: BestFirstSearch.Path) {
+    fun changeColorsOfNodesWithShortestPath(path: Dijkstra.Path) {
         for (i in 0..path.shortestPath.size - 1) {
             val timeInterval = (i*50).toLong()
             Handler().postDelayed({
@@ -87,7 +86,7 @@ class Game : Fragment() {
         }, 1000)
     }
 
-    fun revertSelectedNodesColor(path: BestFirstSearch.Path) {
+    fun revertSelectedNodesColor(path: Dijkstra.Path) {
         val selectedPath = arrayListOf<Node>()
         for ((_, node) in levelBoard) {
             if (node.isSelected) {
@@ -114,7 +113,7 @@ class Game : Fragment() {
         }, delay)
     }
 
-    fun changeColorsOfNotSelected(path: BestFirstSearch.Path) {
+    fun changeColorsOfNotSelected(path: Dijkstra.Path) {
         for (i in path.shortestPath.size - 1 downTo 0) {
             val timeInterval = ((path.shortestPath.size - i)*50).toLong()
             Handler().postDelayed({
@@ -123,10 +122,13 @@ class Game : Fragment() {
                 val boardNode = levelBoard["x${node.x}y${node.y}"]
                 if (boardNode?.isSelected === false && boardNode?.isStart === false && boardNode?.isFinish === false) {
                     incrementScore(-100)
-                    nodeToPrint.setBackgroundColor(Color.parseColor("#b3d9ff"))
+                    nodeToPrint.setBackgroundColor(Color.parseColor("#cccccc"))
                 }
             }, timeInterval)
         }
+
+        val nextLevelButton = root.findViewById<View>(R.id.nextLevelButton)
+        nextLevelButton.visibility = View.VISIBLE
     }
 
     fun incrementScore(increment: Int) {
@@ -136,13 +138,19 @@ class Game : Fragment() {
     }
 
     fun setSpecificOnClickListeners(selectedAlgorithm: String) {
+        val nextLevelButton = root.findViewById<View>(R.id.nextLevelButton)
+        nextLevelButton.setOnClickListener {
+            (activity as MainActivity).incrementLevel()
+            (activity as MainActivity).changeTab(2)
+        }
+
         val checkResultButton = root.findViewById<View>(R.id.checkResultButton)
         checkResultButton.setOnClickListener {
-            if (selectedAlgorithm === "best-first") {
-                val algorithm = BestFirstSearch(levelBoard, levelLayout)
+            if (selectedAlgorithm === "dijkstra") {
+                val algorithm = Dijkstra(levelBoard, levelLayout)
                 val path = algorithm.runAlgorithm()
                 animatePath(path)
-                incrementScore(1000)
+                incrementScore(1500)
             }
 
             //
@@ -154,9 +162,13 @@ class Game : Fragment() {
     override fun onResume() {
         val selectedAlgorithm = (activity as MainActivity).selectedAlgorithm
         val level = (activity as MainActivity).level
+        levelBoard = hashMapOf()
+        val nextLevelButton = root.findViewById<View>(R.id.nextLevelButton)
+        nextLevelButton.visibility = View.GONE
 
-        if (selectedAlgorithm === "best-first") {
-            levelLayout = BestFirstSearchLevels(level).levelLayout
+        if (selectedAlgorithm === "dijkstra") {
+            levelLayout = DijkstraLevels(level).levelLayout
+            levelBoard = hashMapOf()
 
             buildLevelBoard(levelBoard, levelLayout)
             printLevelBoard(levelBoard, root)
