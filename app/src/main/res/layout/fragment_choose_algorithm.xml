@@ -50,20 +50,20 @@
         android:text="Choose a mode" />
 
     <Button
-        android:id="@+id/easyModeButton"
+        android:id="@+id/competetiveModeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:layout_gravity="center"
-        android:text="Easy mode" />
+        android:text="Competetive" />
 
     <Button
-        android:id="@+id/normalModeButton"
+        android:id="@+id/sandboxModeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:layout_gravity="center"
-        android:text="Normal mode" />
+        android:text="Sandbox" />
 
     <Button
         android:id="@+id/startButton"

@@ -11,7 +11,7 @@ import com.example.path_finding_app.R
 class Summary : Fragment() {
 
     override fun onResume() {
-        (activity as MainActivity).changeTab(1)
+        //(activity as MainActivity).changeTab(1)
         super.onResume()
     }
 

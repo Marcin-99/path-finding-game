@@ -141,7 +141,7 @@ class Game : Fragment() {
         val nextLevelButton = root.findViewById<View>(R.id.nextLevelButton)
         nextLevelButton.setOnClickListener {
             (activity as MainActivity).incrementLevel()
-            (activity as MainActivity).changeTab(2)
+            setupLevel()
         }
 
         val checkResultButton = root.findViewById<View>(R.id.checkResultButton)
@@ -159,7 +159,7 @@ class Game : Fragment() {
         }
     }
 
-    override fun onResume() {
+    fun setupLevel() {
         val selectedAlgorithm = (activity as MainActivity).selectedAlgorithm
         val level = (activity as MainActivity).level
         levelBoard = hashMapOf()
@@ -178,7 +178,10 @@ class Game : Fragment() {
 
             setStaticText((activity as MainActivity), root)
         }
+    }
 
+    override fun onResume() {
+        setupLevel()
         super.onResume()
     }
 

@@ -20,8 +20,8 @@ class ChooseAlgorithm : Fragment() {
     protected lateinit var BestFirstButton: View
     protected lateinit var HierarchicalPathButton: View
 
-    protected lateinit var EasyModeButton: View
-    protected lateinit var NormalModeButton: View
+    protected lateinit var SandboxModeButton: View
+    protected lateinit var CompetetiveModeButton: View
 
     protected lateinit var StartButton: View
 
@@ -45,10 +45,10 @@ class ChooseAlgorithm : Fragment() {
     }
 
     private fun clearRestModes () {
-        if (selectedMode !== "easy-mode")
-            changeBtnColor(EasyModeButton, false)
-        if (selectedMode !== "normal-mode")
-            changeBtnColor(NormalModeButton, false)
+        if (selectedMode !== "sandbox")
+            changeBtnColor(SandboxModeButton, false)
+        if (selectedMode !== "competetive")
+            changeBtnColor(CompetetiveModeButton, false)
     }
 
     private fun setOnClickListeners (root: View) {
@@ -68,15 +68,15 @@ class ChooseAlgorithm : Fragment() {
             changeBtnColor(HierarchicalPathButton, true)
         }
 
-        EasyModeButton.setOnClickListener {
-            selectedMode = "easy-mode"
+        SandboxModeButton.setOnClickListener {
+            selectedMode = "sandbox"
             clearRestModes()
-            changeBtnColor(EasyModeButton, true)
+            changeBtnColor(SandboxModeButton, true)
         }
-        NormalModeButton.setOnClickListener {
-            selectedMode = "normal-mode"
+        CompetetiveModeButton.setOnClickListener {
+            selectedMode = "competetive"
             clearRestModes()
-            changeBtnColor(NormalModeButton, true)
+            changeBtnColor(CompetetiveModeButton, true)
         }
 
         StartButton.setOnClickListener {
@@ -99,8 +99,8 @@ class ChooseAlgorithm : Fragment() {
         DijkstraButton = root.findViewById<View>(R.id.dijkstraButton)
         BestFirstButton = root.findViewById<View>(R.id.bestFirstButton)
         HierarchicalPathButton = root.findViewById<View>(R.id.hierarchicalPathButton)
-        EasyModeButton = root.findViewById<View>(R.id.easyModeButton)
-        NormalModeButton = root.findViewById<View>(R.id.normalModeButton)
+        SandboxModeButton = root.findViewById<View>(R.id.sandboxModeButton)
+        CompetetiveModeButton = root.findViewById<View>(R.id.competetiveModeButton)
         StartButton = root.findViewById<View>(R.id.startButton)
 
         setOnClickListeners(root)
