@@ -2,6 +2,9 @@ package com.example.path_finding_app.fragments.shared
 
 import android.graphics.Color
 import android.view.View
+import android.widget.TextView
+import com.example.path_finding_app.MainActivity
+import com.example.path_finding_app.R
 import com.example.path_finding_app.fragments.levels.BestFirstSearch
 
 fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: BestFirstSearch.LevelLayout) {
@@ -59,4 +62,34 @@ fun printLevelBoard(levelBoard: HashMap<String, Node>, root: View) {
             }
         }
     }
+}
+
+fun setOnClickListeners (levelBoard: HashMap<String, Node>, root: View) {
+    for (y in 0..11) {
+        for (x in 0..9) {
+            val boardButton = findButton(root, x, y)
+            boardButton.setOnClickListener {
+                //(activity as MainActivity).alert("button clicked", "x: ${x} | y: ${y}")
+                val node = levelBoard["x${x}y${y}"]
+                if (node?.isStart === false && node?.isFinish === false && node?.isWall === false) {
+                    node.isSelected = !node.isSelected
+                    printLevelBoard(levelBoard, root)
+                }
+            }
+        }
+    }
+}
+
+fun setStaticText(activity: MainActivity, root: View) {
+    val algorithmDisplayText: TextView = root.findViewById<View>(R.id.algorithmDisplayText) as TextView
+    algorithmDisplayText.text = (activity as MainActivity).selectedAlgorithm
+
+    val levelDisplayText: TextView = root.findViewById<View>(R.id.levelDisplayText) as TextView
+    levelDisplayText.text = (activity as MainActivity).level.toString()
+
+    val modeDisplayText: TextView = root.findViewById<View>(R.id.modeDisplayText) as TextView
+    modeDisplayText.text = (activity as MainActivity).selectedMode
+
+    val scoreDisplayText: TextView = root.findViewById<View>(R.id.scoreDisplayText) as TextView
+    scoreDisplayText.text = "1234"
 }
