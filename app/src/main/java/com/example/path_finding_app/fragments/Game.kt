@@ -200,6 +200,8 @@ class Game : Fragment() {
     }
 
     override fun onResume() {
+        (activity as MainActivity).setNewLevel(1)
+        (activity as MainActivity).setNewScore(0)
         setupLevel()
         super.onResume()
     }

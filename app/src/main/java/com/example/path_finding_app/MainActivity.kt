@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    fun setNewScore(newScore: Int) {
+        score = newScore
+    }
+
     fun setNewLevel(newLevel: Int) {
         level = newLevel
     }
