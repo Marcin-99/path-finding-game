@@ -7,7 +7,7 @@ import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
 import com.example.path_finding_app.fragments.levels.DijkstraLevels
 
-fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: DijkstraLevels.LevelLayout) {
+fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: LevelLayout) {
     for (y in 0..11) {
         for (x in 0..9) {
             if (isWall(levelLayout.walls, x, y)) {
@@ -64,16 +64,19 @@ fun printLevelBoard(levelBoard: HashMap<String, Node>, root: View) {
     }
 }
 
-fun setCommonOnClickListeners (levelBoard: HashMap<String, Node>, root: View) {
+fun setCommonOnClickListeners (activity: MainActivity, levelBoard: HashMap<String, Node>, root: View) {
     for (y in 0..11) {
         for (x in 0..9) {
             val boardButton = findButton(root, x, y)
             boardButton.setOnClickListener {
                 val node = levelBoard["x${x}y${y}"]
-                if (node?.isStart === false && node?.isFinish === false && node?.isWall === false) {
-                    node.isSelected = !node.isSelected
-                    printLevelBoard(levelBoard, root)
+                if (activity.selectedMode === "sandbox" && node !== null) {
+                    node.isWall = !node.isWall
                 }
+                else if (node?.isStart === false && node?.isFinish === false && node?.isWall === false) {
+                    node.isSelected = !node.isSelected
+                }
+                printLevelBoard(levelBoard, root)
             }
         }
     }

@@ -1,9 +1,10 @@
 package com.example.path_finding_app.fragments.algorithms
 
 import com.example.path_finding_app.fragments.levels.DijkstraLevels
+import com.example.path_finding_app.fragments.shared.LevelLayout
 import com.example.path_finding_app.fragments.shared.Node
 
-class Dijkstra(levelBoard: HashMap<String, Node>, levelLayout: DijkstraLevels.LevelLayout) {
+class Dijkstra(levelBoard: HashMap<String, Node>, levelLayout: LevelLayout) {
 
     var levelBoard = levelBoard
     var levelLayout = levelLayout
@@ -29,7 +30,7 @@ class Dijkstra(levelBoard: HashMap<String, Node>, levelLayout: DijkstraLevels.Le
         var shortestPath = shortestPath
     }
 
-    fun runAlgorithm(): Path {
+    fun runAlgorithm(isBestFirst: Boolean = false): Path {
         var pathFound = false
 
         var currentNode = Neighbor(
@@ -47,13 +48,18 @@ class Dijkstra(levelBoard: HashMap<String, Node>, levelLayout: DijkstraLevels.Le
 
         while (pathFound === false) {
             currentNode = openPath[0]
+
             if (currentNode.heuristic === 0) {
                 pathFound = true
             }
 
             closedPath += currentNode
             openPath = openPath.drop(1)
-            openPath += getNeighbors(currentNode.node).sortedWith(compareBy({it.heuristic}))
+            openPath += getNeighbors(currentNode.node)
+
+            if (isBestFirst) {
+                openPath = openPath.sortedWith(compareBy({it.heuristic}))
+            }
 
             for (node in openPath) {
                 node.node.isVisited = true

@@ -2,7 +2,7 @@ package com.example.path_finding_app.fragments.levels
 
 import com.example.path_finding_app.fragments.shared.LevelLayout
 
-class DijkstraLevels(level: Int) {
+class BestFirstLevels(level: Int) {
 
     lateinit var levelLayout: LevelLayout
 

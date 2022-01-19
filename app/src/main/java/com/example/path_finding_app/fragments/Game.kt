@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
+import com.example.path_finding_app.fragments.algorithms.BestFirst
 import com.example.path_finding_app.fragments.algorithms.Dijkstra
+import com.example.path_finding_app.fragments.levels.BestFirstLevels
 import com.example.path_finding_app.fragments.levels.DijkstraLevels
 import com.example.path_finding_app.fragments.shared.*
 import kotlin.collections.HashMap
@@ -19,7 +21,7 @@ class Game : Fragment() {
 
     protected lateinit var root: View
     protected var levelBoard: HashMap<String, Node> = hashMapOf()
-    protected lateinit var levelLayout: DijkstraLevels.LevelLayout
+    protected lateinit var levelLayout: LevelLayout
 
     fun animatePath(path: Dijkstra.Path) {
         for (i in 0..path.closedPath.size - 1) {
@@ -131,7 +133,9 @@ class Game : Fragment() {
         if ((activity as MainActivity).level === 5) {
             (nextLevelButton as TextView).text = "Summary"
         }
-        nextLevelButton.visibility = View.VISIBLE
+        if ((activity as MainActivity).selectedMode === "competetive") {
+            nextLevelButton.visibility = View.VISIBLE
+        }
     }
 
     fun incrementScore(increment: Int) {
@@ -161,10 +165,12 @@ class Game : Fragment() {
                 animatePath(path)
                 incrementScore(2000)
             }
-
-            //
-            // Later add rest of the algorithms
-            //
+            else if (selectedAlgorithm === "best-first") {
+                val algorithm = BestFirst(levelBoard, levelLayout)
+                val path = algorithm.runAlgorithm()
+                animatePath(path)
+                incrementScore(2000)
+            }
         }
     }
 
@@ -177,16 +183,20 @@ class Game : Fragment() {
 
         if (selectedAlgorithm === "dijkstra") {
             levelLayout = DijkstraLevels(level).levelLayout
-            levelBoard = hashMapOf()
-
-            buildLevelBoard(levelBoard, levelLayout)
-            printLevelBoard(levelBoard, root)
-
-            setCommonOnClickListeners(levelBoard, root)
-            setSpecificOnClickListeners(selectedAlgorithm)
-
-            setStaticText((activity as MainActivity), root)
         }
+        else if (selectedAlgorithm === "best-first") {
+            levelLayout = BestFirstLevels(level).levelLayout
+        }
+
+        levelBoard = hashMapOf()
+
+        buildLevelBoard(levelBoard, levelLayout)
+        printLevelBoard(levelBoard, root)
+
+        setCommonOnClickListeners(activity as MainActivity, levelBoard, root)
+        setSpecificOnClickListeners(selectedAlgorithm)
+
+        setStaticText((activity as MainActivity), root)
     }
 
     override fun onResume() {
