@@ -95,3 +95,9 @@ fun setStaticText(activity: MainActivity, root: View) {
     val scoreDisplayText: TextView = root.findViewById<View>(R.id.scoreDisplayText) as TextView
     scoreDisplayText.text = activity.score.toString()
 }
+
+fun incrementScore(activity: MainActivity, root: View, increment: Int) {
+    activity.incrementScore(increment)
+    val scoreDisplayText: TextView = root.findViewById<View>(R.id.scoreDisplayText) as TextView
+    scoreDisplayText.text = (activity as MainActivity).score.toString()
+}
