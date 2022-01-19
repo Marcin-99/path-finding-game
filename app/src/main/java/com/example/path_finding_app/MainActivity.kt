@@ -2,7 +2,6 @@ package com.example.path_finding_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.example.path_finding_app.fragments.ChooseAlgorithm
 import com.example.path_finding_app.fragments.Game

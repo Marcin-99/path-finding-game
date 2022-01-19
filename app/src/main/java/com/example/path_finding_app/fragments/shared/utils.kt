@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.TextView
 import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
-import com.example.path_finding_app.fragments.levels.DijkstraLevels
 
 fun buildLevelBoard(levelBoard: HashMap<String, Node>, levelLayout: LevelLayout) {
     for (y in 0..11) {

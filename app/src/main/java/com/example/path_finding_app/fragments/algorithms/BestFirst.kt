@@ -1,7 +1,5 @@
 package com.example.path_finding_app.fragments.algorithms
 
-import com.example.path_finding_app.fragments.algorithms.Dijkstra
-import com.example.path_finding_app.fragments.levels.DijkstraLevels
 import com.example.path_finding_app.fragments.shared.LevelLayout
 import com.example.path_finding_app.fragments.shared.Node
 

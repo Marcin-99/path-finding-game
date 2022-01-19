@@ -1,13 +1,10 @@
 package com.example.path_finding_app.fragments
 
-import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.example.path_finding_app.MainActivity
 import com.example.path_finding_app.R
 import com.example.path_finding_app.fragments.algorithms.BestFirst
