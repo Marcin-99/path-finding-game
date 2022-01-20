@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Path finding documentation</title>
+
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div id="header">
+    <h1>Path finding game documentation</h1>
+  </div>
+
+  <div id="sourceCodeSection">
+    <h2 id="sourceCodeLabel">Source code</h2>
+    <div id="sourceCodeContent">
+        <ul>
+            <li>
+                Game created with Kotlin
+            </li>
+            <li>
+                Created 15 classes | 1096 lines of Kotlin code | Around 1000 lines of pure xml
+            </li>
+            <li>
+                <span>You can find source code on GitHub <a href="https://github.com/Marcin-99/path-finding-game" target="blank">here</a></span>
+            </li>
+        </ul>
+        <span></span>
+    </div>
+  </div>
+
+  <div id="functionalitySection">
+    <h2 id="functionalityLabel">Functionality</h2>
+    <div id="functionalityContent">
+        <ul>
+            <li>
+                Application contains three Fragments: Algoritm, Game and Summary
+            </li>
+            <li>
+                At "Algoritm" fragment user can select one of three algorithms and one of two game mods, then start the game
+            </li>
+            <li>
+                At "Game" fragment user can play the game (currently 5 levels), then he can go to the summary
+            </li>
+            <li>
+                At "Summary" fragment user can see his score
+            </li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="rulesSection">
+    <h2 id="rulesSectionLabel">Rules</h2>
+    <div id="rulesContent">
+        <ul>
+            <li>
+                In competetive mode game keeps track of user score. For every level user passes he gets 2000 points, but he looses 100 for every wrong field he selected and every field that he selected but shouldn't
+            </li>
+            <li>
+                Sandbox game mode allows user to create his own levels and test them
+            </li>
+            <li>
+               Path that user should select always depends on the algorithm
+            </li>
+        </ul>
+    </div>
+  </div>
+
+  <div id="colorsSection">
+    <h2 id="colorsLabel">Colors legend</h2>
+    <div id="colorsContent">
+        <div>
+            <div id="color1"></div>
+            <span>Start node</span>
+        </div>
+        <div>
+            <div id="color2"></div>
+            <span>Goal node</span>
+        </div>
+        <div>
+            <div id="color3"></div>
+            <span>Node selected</span>
+        </div>
+        <div>
+            <div id="color4"></div>
+            <span>Wall</span>
+        </div>
+        <div>
+            <div id="color5"></div>
+            <span>Empty node</span>
+        </div>
+        <div>
+            <div id="color6"></div>
+            <span>Node visited by algorithm</span>
+        </div>
+        <div>
+            <div id="color7"></div>
+            <span>Shortest path</span>
+        </div>
+        <div>
+            <div id="color8"></div>
+            <span>Shortest path not selected by user</span>
+        </div>
+        <div>
+            <div id="color9"></div>
+            <span>Node selected by user outside shortest path</span>
+        </div>
+    </div>
+  </div>
+
+  <div id="classesAndFunctionsSection">
+    <h2 id="classesAndFunctionsLabel">Classes and functions</h2>
+    <div id="classesAndFunctionsContent">
+        <ul>
+            <h3>In app/java/com.example.path_finding_app: </h3>
+            <li>
+                ./MainActivity - contains state and sets up an application
+            </li>
+            <li>
+                ./fragmets - fragments with all the logic split itnto separate classes 
+            </li>
+            <li>
+                ./fragmets/adapters/ViewPagerAdapter - adapter that handles the logic for switching fragments
+            </li>
+            <li>
+                ./fragmets/algorithms - classes that contain all logic for specific algorithms
+            </li>
+            <li>
+                ./fragmets/levels - easly editable classes that specify layout of all levels for every algorithm
+            </li>
+            <li>
+                ./fragmets/shared - classes and functions shared between multiple other classes
+            </li>
+            <li>
+                ./visualiser - code responsible for animations
+            </li>
+        </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
